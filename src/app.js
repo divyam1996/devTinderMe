@@ -10,7 +10,8 @@ const cors = require("cors");
 
 //instance of express
 const app= express();
-app.use(cors());
+// Allow requests from the frontend at port 513 and allow cookies/credentials
+app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
 
 app.use(express.json()); //middleware to parse json data in request body
 app.use(cookieParser());
