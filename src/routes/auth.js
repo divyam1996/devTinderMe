@@ -56,7 +56,11 @@ authRouter.post("/login",async (req,res)=>{
             httpOnly: true
         });
 
-        res.status(200).send('Login successful');
+        // Prepare user data for response without the password
+        const userObj = user.toObject ? user.toObject() : user;
+        const { password, ...userData } = userObj;
+
+        res.status(200).json({ message: 'Login successful', user: userData });
     }
     }catch(err){
         res.status(400).send('Error ' + err.message);
