@@ -6,9 +6,11 @@ const bcrypt = require("bcrypt");
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 const { userAuth } = require("./middlewares/auth");
+const cors = require("cors");
 
 //instance of express
 const app= express();
+app.use(cors());
 
 app.use(express.json()); //middleware to parse json data in request body
 app.use(cookieParser());
